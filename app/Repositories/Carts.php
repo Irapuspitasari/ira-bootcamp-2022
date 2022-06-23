@@ -5,24 +5,23 @@ use App\Models\CartsModel;
 
 class Carts extends CartsModel
 {
-    public static function getAllSession(){
+    public static function getAllBySession()
+    {
         return Carts::table()
-        ->select 
-        (
-            'carts.*',
-            'product.product_name','product.product_code',
-            'product.product_photo','product.product_flag',
-            'product.product_description','product.product_price'
-        )
-        ->where('carts.customers-id', getCussSessions()->id)
-        ->leftJoin('products','products.id','carts.products.id')
-        ->get();
+                ->select
+                (
+                    'carts.*',
+                    'products.product_name','products.product_code','products.product_photo','products.flag','products.description','products.product_price'
+                )
+                ->where('carts.customer_id',getCustSessions()->id)
+                ->leftJoin('products','products.id','carts.product_id')
+                ->get();
     }
-
-    public static function countAllBySession(){
-        return carts::table()
-        ->where('carts.customer_id','products.id','carts.products_id')
-        ->count();
+    public static function countAllBySession()
+    {
+        return Carts::table()
+                ->where('carts.customer_id',getCustSessions()->id)
+                ->leftJoin('products','products.id','carts.product_id')
+                ->count();
     }
-
 }

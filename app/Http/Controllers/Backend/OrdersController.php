@@ -21,7 +21,7 @@ class OrdersController extends Controller
                     ->orwhere('total_price.','like','%'.$search.'%');
             }
         })->paginate(10);
-
+        
         return view('backend.page.orders.index',$data);
     }
 

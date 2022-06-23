@@ -36,7 +36,7 @@ Route::middleware(['middleware'=>'front'])->group(function(){
     Route::get('/cart',[CartController::class,'getIndex']);
     Route::get('/cart/add',[CartController::class,'getAdd']);
     Route::get('/cart/delete\{id}',[CartController::class,'getDelete']);
-    Route::post('/cart/checkout',[CartController::class,'getCheckout']);
+    Route::post('/cart/checkout',[CartController::class,'postCheckout']);
 });
 
 //login

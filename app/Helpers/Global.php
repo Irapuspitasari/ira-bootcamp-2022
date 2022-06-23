@@ -1,8 +1,8 @@
 <?php
 use App\Repositories\Carts;
 
-if(! function_exists('idFormat')){
-    function idFormat($nominal){
+if(! function_exists('idrFormat')){
+    function idrFormat($nominal){
         $value = "Rp." .number_format($nominal, 0 , ',' , ',' );
         return $value;
     }
@@ -14,8 +14,8 @@ if (!function_exists('getCountCart')){
     }
 }
 
-if (!function_exists('getCodeTransaction')){
-    function getCodeTransaction(){
+if (!function_exists('generateCodeTrasaction')){
+    function generateCodeTrasaction(){
         return "USM-TRX-".time();
     }
 }
